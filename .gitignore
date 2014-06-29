@@ -1,4 +1,9 @@
+# Config files
+*.toml
+*.gcfg
+
 # Compiled Object files, Static and Dynamic libs (Shared Objects)
+gatekeeper
 *.o
 *.a
 *.so
