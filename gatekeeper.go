@@ -12,5 +12,5 @@ func main() {
         panic(err)
     }
 
-    server.StartServer(conf)
+    server.StartServer(&server.Server{Conf: conf})
 }
