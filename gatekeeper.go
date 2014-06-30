@@ -2,6 +2,7 @@ package main
 
 import (
     "github.com/taion809/gatekeeper/config"
+    "github.com/taion809/gatekeeper/server"
 )
 
 func main() {
@@ -10,4 +11,6 @@ func main() {
     if err != nil {
         panic(err)
     }
+
+    server.StartServer(conf)
 }

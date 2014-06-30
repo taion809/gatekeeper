@@ -6,24 +6,25 @@ import (
 
 type Config struct {
     Server       server
-    Applications map[string]application
+    Applications map[string]Application
 }
 
 type server struct {
-    Port int
-    Bind string `toml:"bind_address"`
+    Port     int
+    Bind     string `toml:"bind_address"`
+    BuildURI string `toml:"build_uri"`
 }
 
-type application struct {
+type Application struct {
     Name  string
     URI   string
     Root  string
     Steps []string `toml:"build_steps"`
 }
 
-func ReadInConfigFile(filename string) (Config, error) {
+func ReadInConfigFile(filename string) (*Config, error) {
     var conf Config
     _, err := toml.DecodeFile(filename, &conf)
 
-    return conf, err
+    return &conf, err
 }
