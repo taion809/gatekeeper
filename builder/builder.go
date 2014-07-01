@@ -2,26 +2,32 @@ package builder
 
 import (
     "fmt"
-    "github.com/taion809/gatekeeper/config"
     "log"
     "os"
     "os/exec"
     "strings"
 )
 
-func StartBuild(application *config.Application) {
-    err := setupDirectory(application.Root)
+type Application struct {
+    Name  string
+    Root  string
+    Key   string
+    Steps []string
+}
+
+func (app *Application) StartBuild() {
+    err := setupDirectory(app.Root)
 
     if err != nil {
         log.Fatal(err)
     }
 
-    err = os.Chdir(application.Root)
+    err = os.Chdir(app.Root)
     if err != nil {
         log.Fatal(err)
     }
 
-    for _, v := range application.Steps {
+    for _, v := range app.Steps {
         err := execute(v)
         if err != nil {
             log.Fatal(err)

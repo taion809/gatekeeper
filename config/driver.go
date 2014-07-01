@@ -20,7 +20,6 @@ type server struct {
 
 type Application struct {
     Name  string
-    URI   string
     Root  string
     Key   string   `toml:"api_key"`
     Steps []string `toml:"build_steps"`
